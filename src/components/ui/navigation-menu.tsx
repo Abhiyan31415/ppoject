@@ -52,7 +52,7 @@ function NavigationMenuItem({
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
-      className={cn("relative bg-slate-900 text-white rounded-md", className)}
+      className={cn("relative rounded-md", className)}
       {...props}
     />
   )
