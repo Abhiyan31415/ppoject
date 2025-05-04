@@ -117,7 +117,6 @@
   body {
     @apply bg-background text-foreground;
     @apply font-sans;
-    padding: 10px;
   }
 }
 

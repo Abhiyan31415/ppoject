@@ -39,7 +39,7 @@ const TypingLoop: React.FC = () => {
   }, [text, isDeleting, loop, currentMessageIndex, messages]);
 
   return (
-    <div className="text-2xl font-semibold font-mono">
+    <div className="text-2xl font-semibold font-mono text-white">
       {text}
       <span className="animate-pulse">|</span>
     </div>
