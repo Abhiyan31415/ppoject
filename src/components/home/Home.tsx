@@ -19,7 +19,7 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
-  
+  import { Mail, Linkedin, Github } from 'lucide-react';
   import TypingLoop from "./TypingLoop";
 const Home:React.FC=()=>{
     return(
@@ -45,20 +45,52 @@ const Home:React.FC=()=>{
     </NavigationMenuList>
 </NavigationMenu>
       </div>
-      <div className="p-5 w-1/2">
-<Card>
-  <CardHeader>
-    <CardTitle>Abhiyan Khanal</CardTitle>
-    <CardDescription>Card Description</CardDescription>
-  </CardHeader>
-  <CardContent>
-    <p>Card Content</p>
-  </CardContent>
-  <CardFooter>
-    <p>Card Footer</p>
-  </CardFooter>
-</Card>
+      <div className="p-5 flex gap-2 flex-row-reverse">
+<Card className=" p-6 bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg text-gray-800 space-y-4 h-120">
+  <h2 className="text-2xl font-bold text-gray-900">👋 About Me</h2>
+  <p>
+    Hey there! I’m <span className="font-semibold">Abhiyan Khanal</span>, a curious and driven Computer Engineering undergraduate 
+    with a deep interest in building things that matter. I enjoy solving real-world problems through code—whether it’s crafting intelligent systems, 
+    streamlining user experiences, or experimenting with cutting-edge technologies.
+  </p>
+  <p>
+    My work often blends creativity with logic. I’m especially passionate about <span className="font-medium">AI/ML</span>, 
+    <span className="font-medium"> full-stack development</span>, and projects that push the boundaries of what’s possible with software. 
+    I believe in writing clean, thoughtful code and designing systems that are as elegant as they are efficient.
+  </p>
+  <p>
+    Beyond the screen, I’m constantly learning, exploring new ideas, and seeking out challenges that help me grow—both as an engineer and a person. 
+    Whether I'm debugging an algorithm or designing an intuitive UI, I aim to build with purpose and impact.
+  </p>
 
+
+</Card>
+<Card className="w-1/3 flex flex-col p-5 justify-items-center">
+      <div className="text-center space-y-4">
+      <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+        Abhiyan <span className="text-blue-600">— A MERN Stack Developer</span>
+      </h1>
+
+      <div className="flex justify-center gap-6 mt-4 text-gray-700">
+        <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer">
+          <Linkedin className="w-6 h-6 hover:text-blue-600 transition-colors" />
+        </a>
+        <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer">
+          <Github className="w-6 h-6 hover:text-black transition-colors" />
+        </a>
+        <a href="mailto:your-email@example.com">
+          <Mail className="w-6 h-6 hover:text-red-500 transition-colors" />
+        </a>
+      </div>
+    </div>
+      <div className="justify-items-center">
+      <img
+        src="/src/assets/DSC00609.JPG" // replace with your actual image path
+        alt="Abhiyan's Profile"
+        className="w-50 h-50 rounded-full object-cover shadow-md"
+      />
+      </div>
+</Card>
       </div>
         </div>
     )
