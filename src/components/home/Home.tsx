@@ -40,13 +40,13 @@ const Home:React.FC=()=>{
     <NavigationMenuLink className="font-semibold text-white text-1.5xl ">Contact</NavigationMenuLink>
     </NavigationMenuItem>
     <NavigationMenuItem>
-    <NavigationMenuItem className="font-semibold  text-1.5xl"><Button className="bg-white text-black hover:bg-white">Download Resume</Button></NavigationMenuItem>
+    <NavigationMenuItem className="font-semibold  text-1.5xl"><Button className="bg-white text-black hover:bg-white"><a href="Abhiyan-Khanal-cv (3).pdf" download>Download Resume</a></Button></NavigationMenuItem>
     </NavigationMenuItem>
     </NavigationMenuList>
 </NavigationMenu>
       </div>
       <div className="p-5 flex gap-2 flex-row-reverse">
-<Card className=" p-6 bg-white/60 backdrop-blur-lg rounded-2xl shadow-lg text-gray-800 space-y-4 h-120">
+<Card className=" p-6  rounded-2xl shadow-lg text-gray-800 space-y-4 h-120">
   <h2 className="text-2xl font-bold text-gray-900">👋 About Me</h2>
   <p>
     Hey there! I’m <span className="font-semibold">Abhiyan Khanal</span>, a curious and driven Computer Engineering undergraduate 
@@ -72,20 +72,20 @@ const Home:React.FC=()=>{
       </h1>
 
       <div className="flex justify-center gap-6 mt-4 text-gray-700">
-        <a href="https://www.linkedin.com/in/your-linkedin-username" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/abhiyan-khanal-4406b2248" target="_blank" rel="noopener noreferrer">
           <Linkedin className="w-6 h-6 hover:text-blue-600 transition-colors" />
         </a>
-        <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/Abhiyan31415" target="_blank" rel="noopener noreferrer">
           <Github className="w-6 h-6 hover:text-black transition-colors" />
         </a>
-        <a href="mailto:your-email@example.com">
+        <a href="mailto:abhiyankhanal7@gmail.com">
           <Mail className="w-6 h-6 hover:text-red-500 transition-colors" />
         </a>
       </div>
     </div>
       <div className="justify-items-center">
       <img
-        src="/src/assets/DSC00609.JPG" // replace with your actual image path
+        src="/src/assets/DSC00609.JPG"
         alt="Abhiyan's Profile"
         className="w-50 h-50 rounded-full object-cover shadow-md"
       />
