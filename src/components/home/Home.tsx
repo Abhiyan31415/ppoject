@@ -23,7 +23,7 @@ import {
   import TypingLoop from "./TypingLoop";
 const Home:React.FC=()=>{
     return(
-      <div className="min-h-screen bg-gradient-to-br from-green-200 via-purple-200 to-pink-200">
+      <div className="bg-gradient-to-br from-green-200 via-purple-200 to-pink-200">
         <div className="p-5">
     <NavigationMenu className="w-full flex-1 bg-slate-800  p-2 pl-6 rounded-lg">
     <NavigationMenuList className="justify-evenly">
