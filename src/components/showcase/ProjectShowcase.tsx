@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
-import { Github, ExternalLink, Smartphone, Globe, Brain, Bus, Map, Heart } from 'lucide-react';
+import { Github, ExternalLink, Brain, Bus, Map, Heart } from 'lucide-react';
 
 const ProjectShowcase: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState(0);

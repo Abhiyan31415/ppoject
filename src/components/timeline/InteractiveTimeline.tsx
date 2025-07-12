@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '../ui/card';
-import { GraduationCap, Code, Briefcase, Award, Calendar, MapPin } from 'lucide-react';
+import { GraduationCap, Code, Briefcase, Award, Calendar } from 'lucide-react';
 
 const InteractiveTimeline: React.FC = () => {
   const [activeEvent, setActiveEvent] = useState(0);

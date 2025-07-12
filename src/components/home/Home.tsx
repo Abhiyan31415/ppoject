@@ -1,23 +1,14 @@
 import {
     NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
   } from "@/components/ui/navigation-menu"
   import {
     Button
   } from "@/components/ui/button"
   import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
+    Card
   } from "@/components/ui/card"
   import { Mail, Linkedin, Github } from 'lucide-react';
   import TypingLoop from "./TypingLoop";
