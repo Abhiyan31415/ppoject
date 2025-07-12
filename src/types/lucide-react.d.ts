@@ -26,6 +26,7 @@ declare module 'lucide-react' {
   export const Calendar: FC<IconProps>;
   export const Download: FC<IconProps>;
   export const Phone: FC<IconProps>;
+  export const ChevronDown: FC<IconProps>;
   
   // Add other icons as needed
   const icons: Record<string, FC<IconProps>>;
