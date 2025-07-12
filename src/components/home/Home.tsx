@@ -110,7 +110,7 @@ const Home:React.FC=()=>{
     </div>
       <div className="justify-items-center">
       <img
-        src="/src/assets/DSC00609.JPG"
+        src="/DSC00609.JPG"
         alt="Abhiyan's Profile"
         className="w-50 h-50 rounded-full object-cover shadow-md"
       />
