@@ -125,34 +125,39 @@ const InteractiveTimeline: React.FC = () => {
   }, []);
 
   return (
-    <section id="timeline" className="py-20 px-6 bg-gradient-to-b from-slate-900 to-gray-900 relative overflow-hidden">
+    <section id="timeline" className="py-12 md:py-20 px-3 md:px-6 bg-gradient-to-b from-slate-900 to-gray-900 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             My <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Journey</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             From student to full-stack developer - tracking my evolution in the tech world
           </p>
         </div>
 
-        <div className="relative">
-          {/* Central Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-cyan-400 to-purple-400 h-full opacity-30"></div>
+        <div className="relative max-w-4xl mx-auto">
+          {/* Central Timeline Line - Hidden on mobile */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-cyan-400 to-purple-400 h-full opacity-30"></div>
+          
+          {/* Mobile Timeline Line */}
+          <div className="md:hidden absolute left-6 w-0.5 bg-gradient-to-b from-cyan-400 to-purple-400 h-full opacity-30"></div>
 
           {/* Timeline Events */}
-          <div className="space-y-12">
+          <div className="space-y-6 md:space-y-12">
             {timelineEvents.map((event, index) => (
               <div
                 key={event.id}
                 className={`relative flex items-center ${
-                  index % 2 === 0 ? 'justify-start' : 'justify-end'
+                  index % 2 === 0 ? 'md:justify-start justify-start' : 'md:justify-end justify-start'
                 }`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                <div className={`absolute z-10 ${
+                  index % 2 === 0 ? 'md:left-1/2 left-6' : 'md:left-1/2 left-6'
+                } transform -translate-x-1/2`}>
                   <div
-                    className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-500 ${
+                    className={`w-3 h-3 md:w-4 md:h-4 rounded-full cursor-pointer transition-all duration-500 ${
                       activeEvent === index
                         ? `bg-gradient-to-r ${event.color} scale-150 shadow-lg`
                         : 'bg-gray-600 hover:bg-gray-500'
@@ -163,7 +168,9 @@ const InteractiveTimeline: React.FC = () => {
 
                 {/* Event Card */}
                 <div 
-                  className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}
+                  className={`w-full md:w-5/12 ${
+                    index % 2 === 0 ? 'md:pr-8 pl-12 md:pl-0' : 'md:pl-8 pl-12 md:pl-0'
+                  }`}
                   onClick={() => setActiveEvent(index)}
                 >
                   <Card
@@ -173,20 +180,20 @@ const InteractiveTimeline: React.FC = () => {
                         : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                     }`}
                   >
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className={`p-3 rounded-lg ${activeEvent === index ? 'bg-white/20' : 'bg-gray-700'}`}>
+                    <CardContent className="p-4 md:p-6">
+                      <div className="flex items-start space-x-3 md:space-x-4">
+                        <div className={`p-2 md:p-3 rounded-lg ${activeEvent === index ? 'bg-white/20' : 'bg-gray-700'}`}>
                           {event.icon}
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 min-w-0">
                           <div className="flex items-center space-x-2 mb-2">
-                            <Calendar className="w-4 h-4" />
-                            <span className={`text-sm font-medium ${activeEvent === index ? 'text-white/80' : 'text-gray-400'}`}>
+                            <Calendar className="w-3 h-3 md:w-4 md:h-4" />
+                            <span className={`text-xs md:text-sm font-medium ${activeEvent === index ? 'text-white/80' : 'text-gray-400'}`}>
                               {event.date}
                             </span>
                           </div>
-                          <h3 className="text-xl font-bold mb-1">{event.title}</h3>
-                          <p className={`text-sm mb-2 ${activeEvent === index ? 'text-white/80' : 'text-gray-400'}`}>
+                          <h3 className="text-lg md:text-xl font-bold mb-1 break-words">{event.title}</h3>
+                          <p className={`text-xs md:text-sm mb-2 ${activeEvent === index ? 'text-white/80' : 'text-gray-400'} break-words`}>
                             {event.subtitle}
                           </p>
                           <div className={`text-xs px-2 py-1 rounded-full inline-block mb-3 ${
@@ -206,28 +213,28 @@ const InteractiveTimeline: React.FC = () => {
 
         {/* Active Event Details */}
         {activeEvent !== null && (
-          <div className="mt-16">
+          <div className="mt-8 md:mt-16">
             <Card className="bg-gray-800/50 backdrop-blur-lg border border-gray-700">
-              <CardContent className="p-8">
-                <div className="grid md:grid-cols-2 gap-8">
+              <CardContent className="p-4 md:p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                   <div>
-                    <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${timelineEvents[activeEvent].color} mb-4`}>
+                    <div className={`inline-flex p-3 md:p-4 rounded-full bg-gradient-to-r ${timelineEvents[activeEvent].color} mb-4`}>
                       {timelineEvents[activeEvent].icon}
                     </div>
-                    <h3 className="text-3xl font-bold text-white mb-2">
+                    <h3 className="text-xl md:text-3xl font-bold text-white mb-2">
                       {timelineEvents[activeEvent].title}
                     </h3>
-                    <p className="text-gray-300 text-lg leading-relaxed">
+                    <p className="text-gray-300 text-sm md:text-lg leading-relaxed">
                       {timelineEvents[activeEvent].description}
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-white font-semibold mb-4">Key Achievements</h4>
+                    <h4 className="text-white font-semibold mb-4 text-sm md:text-base">Key Achievements</h4>
                     <div className="space-y-3">
                       {timelineEvents[activeEvent].achievements.map((achievement, index) => (
                         <div key={index} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mt-2"></div>
-                          <span className="text-gray-300">{achievement}</span>
+                          <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                          <span className="text-gray-300 text-sm md:text-base">{achievement}</span>
                         </div>
                       ))}
                     </div>

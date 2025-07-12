@@ -56,38 +56,38 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-6 bg-gradient-to-b from-gray-900 to-slate-900">
+    <section id="contact" className="py-12 md:py-20 px-3 md:px-6 bg-gradient-to-b from-gray-900 to-slate-900">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Let's <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Connect</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-sm md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
             Ready to collaborate on your next project or discuss innovative solutions? I'd love to hear from you!
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-4 md:gap-8">
           {/* Contact Information */}
-          <div className="lg:col-span-1 space-y-6">
+          <div className="lg:col-span-1 space-y-4 md:space-y-6">
             <Card className="bg-gray-800/50 backdrop-blur-lg border border-gray-700">
-              <CardContent className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-6">Get In Touch</h3>
-                <div className="space-y-4">
+              <CardContent className="p-4 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Get In Touch</h3>
+                <div className="space-y-3 md:space-y-4">
                   {contactInfo.map((info, index) => (
                     <a
                       key={index}
                       href={info.link}
                       target={info.link.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-4 p-4 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-all duration-300 transform hover:scale-105"
+                      className="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 rounded-lg bg-gray-700/50 hover:bg-gray-700 transition-all duration-300 transform hover:scale-105"
                     >
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${info.color}`}>
+                      <div className={`p-2 md:p-3 rounded-lg bg-gradient-to-r ${info.color} flex-shrink-0`}>
                         {info.icon}
                       </div>
-                      <div>
-                        <p className="text-gray-400 text-sm">{info.label}</p>
-                        <p className="text-white font-medium">{info.value}</p>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-gray-400 text-xs md:text-sm">{info.label}</p>
+                        <p className="text-white font-medium text-sm md:text-base truncate">{info.value}</p>
                       </div>
                     </a>
                   ))}
@@ -99,10 +99,10 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <div className="lg:col-span-2">
             <Card className="bg-gray-800/50 backdrop-blur-lg border border-gray-700">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Send me a message</h3>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+              <CardContent className="p-4 md:p-8">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Send me a message</h3>
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                     <div>
                       <label className="block text-gray-300 text-sm font-medium mb-2">
                         Your Name
@@ -113,7 +113,7 @@ const Contact: React.FC = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 md:px-4 py-2 md:py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base"
                         placeholder="John Doe"
                       />
                     </div>
@@ -127,7 +127,7 @@ const Contact: React.FC = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 md:px-4 py-2 md:py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm md:text-base"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -141,17 +141,17 @@ const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                      rows={4}
+                      className="w-full px-3 md:px-4 py-2 md:py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm md:text-base"
                       placeholder="Tell me about your project or just say hello!"
                     />
                   </div>
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:opacity-90 flex items-center justify-center space-x-2 py-3"
+                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:opacity-90 flex items-center justify-center space-x-2 py-2 md:py-3"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send Message</span>
+                    <span className="text-sm md:text-base">Send Message</span>
                   </Button>
                 </form>
               </CardContent>

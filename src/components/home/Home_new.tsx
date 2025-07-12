@@ -110,7 +110,7 @@ const Home:React.FC=()=>{
           </div>
         </div>
 
-        <div className="p-3 md:p-5 flex flex-col lg:flex-row gap-4 lg:gap-6 max-w-full overflow-hidden">
+        <div className="p-3 md:p-5 flex flex-col lg:flex-row-reverse gap-4 lg:gap-6 max-w-full overflow-hidden">
           {/* Profile Card - Mobile First */}
           <Card className="w-full lg:w-1/3 flex flex-col p-4 md:p-5 items-center">
             <div className="text-center space-y-3 md:space-y-4">
@@ -144,18 +144,15 @@ const Home:React.FC=()=>{
           <Card className="flex-1 p-4 md:p-6 rounded-2xl shadow-lg text-gray-800 space-y-3 md:space-y-4">
             <h2 className="text-xl md:text-2xl font-bold text-gray-900">👋 About Me</h2>
             <p className="text-sm md:text-base">
-              Hey there! I'm <span className="font-semibold">Abhiyan Khanal</span>, a curious and driven Computer Engineering undergraduate 
-              with a deep interest in building things that matter. I enjoy solving real-world problems through code—whether it's crafting intelligent systems, 
-              streamlining user experiences, or experimenting with cutting-edge technologies.
+              Hey there! I'm <span className="font-semibold">Abhiyan Khanal</span>, a Computer Engineering undergraduate 
+              passionate about building intelligent systems and crafting seamless user experiences.
             </p>
             <p className="text-sm md:text-base">
-              My work often blends creativity with logic. I'm especially passionate about <span className="font-medium">AI/ML</span>, 
-              <span className="font-medium"> full-stack development</span>, and projects that push the boundaries of what's possible with software. 
-              I believe in writing clean, thoughtful code and designing systems that are as elegant as they are efficient.
+              I specialize in <span className="font-medium">AI/ML</span> and 
+              <span className="font-medium"> full-stack development</span>, focusing on clean code and elegant solutions.
             </p>
             <p className="text-sm md:text-base">
-              Beyond the screen, I'm constantly learning, exploring new ideas, and seeking out challenges that help me grow—both as an engineer and a person. 
-              Whether I'm debugging an algorithm or designing an intuitive UI, I aim to build with purpose and impact.
+              Always learning and exploring new technologies to build impactful software that makes a difference.
             </p>
           </Card>
         </div>
