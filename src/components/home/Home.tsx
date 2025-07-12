@@ -22,25 +22,59 @@ import {
   import { Mail, Linkedin, Github } from 'lucide-react';
   import TypingLoop from "./TypingLoop";
 const Home:React.FC=()=>{
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return(
-      <div className="bg-gradient-to-br from-green-200 via-purple-200 to-pink-200">
+      <div id="home" className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen">
         <div className="p-5">
-    <NavigationMenu className="w-full flex-1 bg-slate-800  p-2 pl-6 rounded-lg">
+    <NavigationMenu className="w-full flex-1 bg-black/30 backdrop-blur-lg border border-gray-700 p-2 pl-6 rounded-lg">
     <NavigationMenuList className="justify-evenly">
     <NavigationMenuItem className="w-1/3 ml-0 text-2xl font-bold">
      <TypingLoop/>
     </NavigationMenuItem>
     <NavigationMenuItem>
-      <NavigationMenuLink className="font-semibold  text-white text-1.5xl ml-">Home</NavigationMenuLink>
+      <NavigationMenuLink 
+        className="font-semibold text-white text-1.5xl cursor-pointer hover:text-purple-400 transition-colors"
+        onClick={() => scrollToSection('home')}
+      >
+        Home
+      </NavigationMenuLink>
     </NavigationMenuItem>
     <NavigationMenuItem>
-    <NavigationMenuLink className="font-semibold text-white text-1.5xl">About Me</NavigationMenuLink>
+    <NavigationMenuLink 
+      className="font-semibold text-white text-1.5xl cursor-pointer hover:text-purple-400 transition-colors"
+      onClick={() => scrollToSection('journey')}
+    >
+      Journey
+    </NavigationMenuLink>
     </NavigationMenuItem>
     <NavigationMenuItem>
-    <NavigationMenuLink className="font-semibold text-white text-1.5xl ">Contact</NavigationMenuLink>
+    <NavigationMenuLink 
+      className="font-semibold text-white text-1.5xl cursor-pointer hover:text-purple-400 transition-colors"
+      onClick={() => scrollToSection('showcase')}
+    >
+      Projects
+    </NavigationMenuLink>
     </NavigationMenuItem>
     <NavigationMenuItem>
-    <NavigationMenuItem className="font-semibold  text-1.5xl"><Button className="bg-white text-black hover:bg-white"><a href="Abhiyan-Khanal-cv (3).pdf" download>Download Resume</a></Button></NavigationMenuItem>
+    <NavigationMenuLink 
+      className="font-semibold text-white text-1.5xl cursor-pointer hover:text-purple-400 transition-colors"
+      onClick={() => scrollToSection('contact')}
+    >
+      Contact
+    </NavigationMenuLink>
+    </NavigationMenuItem>
+    <NavigationMenuItem>
+    <NavigationMenuItem className="font-semibold text-1.5xl">
+      <Button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:opacity-90">
+        <a href="Abhiyan-Khanal-cv (3).pdf" download>Download Resume</a>
+      </Button>
+    </NavigationMenuItem>
     </NavigationMenuItem>
     </NavigationMenuList>
 </NavigationMenu>
