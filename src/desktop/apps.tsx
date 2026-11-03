@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Bus, Dna, HeartPulse, Mail, Map as MapIcon, Terminal as TerminalIcon, User } from "lucide-react";
 import { projects } from "@/lib/data";
-import { AppTile, DocIcon, FolderIcon } from "./icons";
+import { AppTile, DocIcon, FolderIcon, LogoTile } from "./icons";
 import AboutApp from "./apps/AboutApp";
 import ProjectsApp from "./apps/ProjectsApp";
 import ProjectApp from "./apps/ProjectApp";
@@ -36,7 +36,12 @@ const projectApps: AppDef[] = projects.map((p) => ({
   id: `project:${p.slug}`,
   title: p.name,
   label: p.name,
-  icon: (size) => <AppTile icon={projectIcons[p.slug]} from={p.color[0]} to={p.color[1]} size={size} />,
+  icon: (size) =>
+    p.logo ? (
+      <LogoTile src={p.logo} size={size} />
+    ) : (
+      <AppTile icon={projectIcons[p.slug]} from={p.color[0]} to={p.color[1]} size={size} />
+    ),
   width: p.video ? 640 : 560,
   height: p.video ? 640 : 520,
   render: () => <ProjectApp project={p} />,

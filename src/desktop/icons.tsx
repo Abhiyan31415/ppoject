@@ -55,6 +55,19 @@ export function AppTile({
   );
 }
 
+/** Rounded white tile that holds a real project logo. */
+export function LogoTile({ src, size = 52 }: { src: string; size?: number }) {
+  return (
+    <span
+      className="app-tile logo-tile"
+      style={{ width: size, height: size, borderRadius: size * 0.24 }}
+      aria-hidden="true"
+    >
+      <img src={src} alt="" draggable={false} />
+    </span>
+  );
+}
+
 /** A white page with a folded corner (for documents like the resume). */
 export function DocIcon({ label = "PDF", size = 52 }: { label?: string; size?: number }) {
   return (

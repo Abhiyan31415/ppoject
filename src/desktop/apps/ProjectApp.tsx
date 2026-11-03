@@ -17,8 +17,23 @@ export default function ProjectApp({ project: p }: { project: Project }) {
     >
       <div className="project-head">
         {appById[`project:${p.slug}`].icon(64)}
-        <div>
-          <h1>{p.name}</h1>
+        <div className="project-info">
+          <div className="project-title-row">
+            <h1>{p.name}</h1>
+            <div className="project-actions">
+              {p.demo && (
+                <a className="aqua-btn primary small" href={p.demo} target="_blank" rel="noreferrer">
+                  Open live <ExternalLink size={12} />
+                </a>
+              )}
+              {p.github && (
+                <a className="aqua-btn small" href={p.github} target="_blank" rel="noreferrer">
+                  <Github size={12} /> View code
+                </a>
+              )}
+            </div>
+          </div>
+          <p className="muted">{p.meta}</p>
           <div className="tags">
             {p.tech.map((t) => (
               <span key={t} className="tag">
@@ -78,26 +93,21 @@ export default function ProjectApp({ project: p }: { project: Project }) {
         ))}
       </ul>
 
-      <div className="button-row">
-        {p.demo && (
-          <a
-            className="aqua-btn primary"
-            href={p.demo}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Open live app <ExternalLink size={13} />
-          </a>
-        )}
-        <a
-          className="aqua-btn"
-          href={p.github}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Github size={13} /> View code
-        </a>
-      </div>
+      {p.sections.map((sec) => (
+        <section key={sec.heading}>
+          <h2 className="label">{sec.heading}</h2>
+          {sec.paragraphs?.map((t) => (
+            <p key={t}>{t}</p>
+          ))}
+          {sec.bullets && (
+            <ul className="plain-list">
+              {sec.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
     </div>
   );
 }
