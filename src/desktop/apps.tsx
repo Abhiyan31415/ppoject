@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Bus, Dna, HeartPulse, Mail, Map as MapIcon, Terminal as TerminalIcon, User } from "lucide-react";
+import { Bus, Dna, FileCheck2, HeartPulse, Mail, Map as MapIcon, Terminal as TerminalIcon, User } from "lucide-react";
 import { projects } from "@/lib/data";
 import { AppTile, DocIcon, FolderIcon, LogoTile } from "./icons";
 import AboutApp from "./apps/AboutApp";
@@ -28,6 +28,7 @@ export type AppDef = {
 const projectIcons: Record<string, typeof MapIcon> = {
   gantabya: MapIcon,
   "hamro-bus": Bus,
+  "dda-drug-portal": FileCheck2,
   cognicare: HeartPulse,
   "evolutionary-creatures": Dna,
 };
@@ -35,7 +36,7 @@ const projectIcons: Record<string, typeof MapIcon> = {
 const projectApps: AppDef[] = projects.map((p) => ({
   id: `project:${p.slug}`,
   title: p.name,
-  label: p.name,
+  label: p.shortName ?? p.name,
   icon: (size) =>
     p.logo ? (
       <LogoTile src={p.logo} size={size} />

@@ -110,7 +110,8 @@ export const achievements = [
     title: "1st Runner-Up, Telemedicine hackathon",
     event: "4th National Telemedicine & 1st National Digital Health Conference",
     year: "2026",
-    detail: "Hackathon run alongside the conference, as part of a four-person team.",
+    detail:
+      "Built the DDA Drug Registration Portal, a CTD dossier filing and review system for Nepal's Department of Drug Administration, as part of a four-person team.",
   },
   {
     title: "Nepal-US Hackathon",
@@ -137,6 +138,8 @@ export type ProjectSection = {
 export type Project = {
   slug: string;
   name: string;
+  /** Shorter label for the desktop icon, when the name is too long to fit. */
+  shortName?: string;
   /** One line under the title: when, who with, what kind of project. */
   meta: string;
   description: string;
@@ -255,6 +258,78 @@ export const projects: Project[] = [
     shots: [{ src: "/images/janakpur-fish-house.webp", alt: "Janakpur Fish House homepage with the founder chef and links to the menu and gallery" }],
     color: ["#fdba74", "#c2410c"],
     logo: "/images/janakpur-fish-house-logo.webp",
+    featured: true,
+  },
+  {
+    slug: "dda-drug-portal",
+    name: "DDA Drug Registration Portal",
+    shortName: "DDA Portal",
+    meta: "Jan 2026, revamped Nov 2026 · Team of four · Full stack",
+    description:
+      "A portal for filing and reviewing drug registration dossiers with Nepal's Department of Drug Administration. Applicants file a dossier split into the five modules of the ICH Common Technical Document, reviewers assess each module and raise queries, and a lead reviewer assigns the work and makes the final decision. We built it as team Char Devs at the hackathon of the 4th National Telemedicine & 1st National Digital Health Conference, where it placed 1st runner-up.",
+    features: [
+      "Product registration and a step-by-step dossier wizard for CTD Modules 1–5",
+      "Reviewer queue with a module review page, assessment checklist and queries",
+      "Lead reviewer board to assign modules, track reviewer workload and issue the final decision",
+      "Role-based access with JWT for applicants, reviewers, lead reviewers and admins",
+      "Public patient information leaflet lookup on the landing page",
+    ],
+    sections: [
+      {
+        heading: "The problem",
+        paragraphs: [
+          "Registering a drug in Nepal means sending the DDA a large dossier, and reviewing it involves several assessors working on different parts at once. We wanted one place where an applicant can see exactly which part of their dossier is stuck and why, and where the lead reviewer can see who is working on what.",
+        ],
+      },
+      {
+        heading: "Applicants",
+        bullets: [
+          "Register a product with its brand and generic name, ATC code, strength, dosage form, route and type (NDA, ANDA, API or biological).",
+          "File a dossier through a step-by-step wizard that only asks for the CTD modules the product type needs, with document uploads. Save it as a draft or submit it to the DDA.",
+          "Track every application module by module, and answer reviewer queries with extra documents from the submission page.",
+        ],
+      },
+      {
+        heading: "Reviewers and the lead reviewer",
+        bullets: [
+          "Reviewers get a queue of the modules assigned to them. The review page shows the uploaded documents, the applicant's declared data and the query history next to a checklist, and the reviewer approves the module, keeps it under review or rejects it.",
+          "Raising a query moves both the module and the submission to Query raised; once the applicant answers, they move back to Under review.",
+          "The lead reviewer has a review board with filters for submissions that need assignment, have open queries or are ready for a decision. They assign modules to reviewers and can see each reviewer's workload. Final approval only unlocks when every module is approved, and a rejection needs a reason.",
+          "Module 3 quality data (active ingredients, excipients, formulas, manufacturing process, stability and packaging) is modelled in the database, not just attached as PDFs.",
+        ],
+      },
+      {
+        heading: "The revamp",
+        paragraphs: [
+          "The hackathon version worked for a demo but trusted whoever the request headers said you were. In November 2026 I went back and made it something I'd be comfortable deploying.",
+        ],
+        bullets: [
+          "JWT authentication with role guards on every route (APPLICANT, REVIEWER, LEAD_REVIEWER, ADMIN) and ownership checks so applicants only see their own data. Identity now only comes from the token.",
+          "Status transitions are enforced on the server, so a draft can't be approved and a submission can't be submitted twice.",
+          "Removed a database credential that had been committed to the repo.",
+          "Uploads go to local disk in development, or to Vercel Blob when a token is set.",
+          "An idempotent seed script creates demo data covering every status, Postgres runs from Docker Compose, and GitHub Actions runs CI.",
+          "A redesigned UI with a shared design system, one-click demo accounts on the sign-in page and layouts that work on phones.",
+        ],
+      },
+      {
+        heading: "Stack",
+        paragraphs: [
+          "The frontend is React 19 and TypeScript with Vite, Tailwind CSS v4 and React Router, with typed API clients sharing one fetch helper. The backend is Node.js and Express 5 in TypeScript, with Prisma 7 on PostgreSQL, a REST API under /api/v1 split into routes per resource, and Multer for uploads.",
+        ],
+      },
+    ],
+    tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Node.js", "Express", "Prisma", "PostgreSQL", "JWT", "Docker", "GitHub Actions"],
+    github: "https://github.com/Abhiyan31415/char-devs-telemedicine",
+    demo: null,
+    video: null,
+    shots: [
+      { src: "/images/dda-portal-lead-reviewer.webp", alt: "Lead reviewer board with active submissions, CTD module progress and each reviewer's workload" },
+      { src: "/images/dda-portal-applicant.webp", alt: "Applicant portal with open reviewer queries and a table of applications by status" },
+      { src: "/images/dda-portal-module-review.webp", alt: "Module 3 quality review with the uploaded documents, an assessment checklist and the approve, keep under review and reject decisions" },
+      { src: "/images/dda-portal-submission.webp", alt: "Submission page for Amoxinep 250 with open queries, Module 1 documents and module-by-module review progress" },
+    ],
+    color: ["#60a5fa", "#1e3a5f"],
     featured: true,
   },
   {
@@ -537,7 +612,7 @@ export const terminalCommands: Record<string, string[]> = {
     "Computer engineering student at Pulchowk.",
     "I build web and mobile apps, mostly full stack.",
   ],
-  projects: ["Kanun Sathi, Janakpur Fish House, Gantabya, CogniCare, Hamro Bus, Evolutionary Creatures"],
+  projects: ["Kanun Sathi, Janakpur Fish House, DDA Drug Registration Portal, Gantabya, CogniCare, Hamro Bus, Evolutionary Creatures"],
   skills: ["TypeScript, Python, React, Node.js, FastAPI, PostgreSQL, Flutter, AWS, Docker, Linux"],
   certifications: ["AWS Certified Solutions Architect – Associate"],
   resume: ["Resume: " + profile.resumeUrl],
