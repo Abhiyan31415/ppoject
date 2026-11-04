@@ -56,6 +56,8 @@ export default function AboutApp({ open }: { open: (id: string) => void }) {
         <a href={`mailto:${profile.email}`}>
           <Mail size={14} /> Email
         </a>
+        <a href="https://blogs.abhiyankhanal1.com.np">Blog</a>
+        <a href="/about/">Full profile</a>
       </div>
     </div>
   );

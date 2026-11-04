@@ -2,10 +2,11 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from "path"
 import tailwindcss from "@tailwindcss/vite"
+import seo from "./seo/plugin"
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), seo()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -25,5 +26,5 @@ export default defineConfig({
       }
     }
   },
-  base: './'
+  base: '/'
 })

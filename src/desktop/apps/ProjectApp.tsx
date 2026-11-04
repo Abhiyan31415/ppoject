@@ -33,7 +33,9 @@ export default function ProjectApp({ project: p }: { project: Project }) {
               )}
             </div>
           </div>
-          <p className="muted">{p.meta}</p>
+          <p className="muted">
+            {p.meta} · <a href={`/projects/${p.slug}/`}>Shareable page</a>
+          </p>
           <div className="tags">
             {p.tech.map((t) => (
               <span key={t} className="tag">
