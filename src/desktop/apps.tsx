@@ -20,6 +20,9 @@ export type AppDef = {
   /** Short label under the desktop icon */
   label: string;
   icon: (size?: number) => ReactNode;
+  /** Own window size; without one the window opens at the default large size */
+  width?: number;
+  height?: number;
   render: (ctx: { open: (id: AppId) => void; close: () => void }) => ReactNode;
 };
 
@@ -50,6 +53,8 @@ export const apps: AppDef[] = [
     title: "About Abhiyan",
     label: "About",
     icon: (size) => <FolderIcon color="#5aa9f2" size={size} />,
+    width: 440,
+    height: 540,
     render: ({ open }) => <AboutApp open={open} />,
   },
   {

@@ -7,7 +7,7 @@ import Dock from "./Dock";
 import Spotlight from "./Spotlight";
 
 const MENU_H = 26;
-// Every window opens at this size, shrunk to fit smaller screens.
+// Default window size (apps can set their own), shrunk to fit smaller screens.
 const WIN_W = 1100;
 const WIN_H = 815;
 
@@ -49,10 +49,12 @@ export default function Desktop() {
         // Cascade new windows a little so they don't stack exactly on top of each other.
         const vw = window.innerWidth;
         const vh = window.innerHeight;
-        const w = Math.min(WIN_W, vw - 40);
-        const h = Math.min(WIN_H, vh - MENU_H - dockH - 30);
+        const w = Math.min(app.width ?? WIN_W, vw - 40);
+        const h = Math.min(app.height ?? WIN_H, vh - MENU_H - dockH - 30);
         const step = (ws.length % 6) * 28;
-        const x = Math.max(20, Math.min((vw - w) / 2 + step, vw - w - 20));
+        // Small windows (About) sit a bit left of centre, as before; large ones are centred.
+        const shift = app.width ? -120 : 0;
+        const x = Math.max(20, Math.min((vw - w) / 2 + shift + step, vw - w - 20));
         const y = Math.max(MENU_H + 14, Math.min(MENU_H + 40 + step, vh - dockH - h));
         return [...ws, { id, x, y, w, h, z, minimized: false, maximized: false }];
       });
