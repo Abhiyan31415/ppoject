@@ -20,8 +20,6 @@ export type AppDef = {
   /** Short label under the desktop icon */
   label: string;
   icon: (size?: number) => ReactNode;
-  width: number;
-  height: number;
   render: (ctx: { open: (id: AppId) => void; close: () => void }) => ReactNode;
 };
 
@@ -43,8 +41,6 @@ const projectApps: AppDef[] = projects.map((p) => ({
     ) : (
       <AppTile icon={projectIcons[p.slug]} from={p.color[0]} to={p.color[1]} size={size} />
     ),
-  width: p.video ? 640 : 560,
-  height: p.video ? 640 : 520,
   render: () => <ProjectApp project={p} />,
 }));
 
@@ -54,8 +50,6 @@ export const apps: AppDef[] = [
     title: "About Abhiyan",
     label: "About",
     icon: (size) => <FolderIcon color="#5aa9f2" size={size} />,
-    width: 440,
-    height: 540,
     render: ({ open }) => <AboutApp open={open} />,
   },
   {
@@ -63,8 +57,6 @@ export const apps: AppDef[] = [
     title: "Projects",
     label: "Projects",
     icon: (size) => <FolderIcon color="#f2b84b" size={size} />,
-    width: 620,
-    height: 400,
     render: ({ open }) => <ProjectsApp open={open} />,
   },
   {
@@ -72,8 +64,6 @@ export const apps: AppDef[] = [
     title: "Work.txt",
     label: "Work",
     icon: (size) => <FolderIcon color="#8b8cf6" size={size} />,
-    width: 520,
-    height: 420,
     render: () => <ExperienceApp />,
   },
   {
@@ -81,8 +71,6 @@ export const apps: AppDef[] = [
     title: "Skills",
     label: "Skills",
     icon: (size) => <FolderIcon color="#4cc38a" size={size} />,
-    width: 520,
-    height: 460,
     render: () => <SkillsApp />,
   },
   {
@@ -90,8 +78,6 @@ export const apps: AppDef[] = [
     title: "Certifications",
     label: "Certificates",
     icon: (size) => <FolderIcon color="#f2798c" size={size} />,
-    width: 520,
-    height: 440,
     render: () => <CertificationsApp />,
   },
   ...projectApps,
@@ -100,8 +86,6 @@ export const apps: AppDef[] = [
     title: "Resume.pdf",
     label: "Resume.pdf",
     icon: (size) => <DocIcon size={size} />,
-    width: 720,
-    height: 720,
     render: () => <ResumeApp />,
   },
   {
@@ -109,8 +93,6 @@ export const apps: AppDef[] = [
     title: "Terminal",
     label: "Terminal",
     icon: (size) => <AppTile icon={TerminalIcon} from="#4b5563" to="#111827" size={size} />,
-    width: 660,
-    height: 460,
     render: ({ open, close }) => <TerminalApp open={open} close={close} />,
   },
   {
@@ -118,8 +100,6 @@ export const apps: AppDef[] = [
     title: "New Message",
     label: "Contact",
     icon: (size) => <AppTile icon={Mail} from="#7cc4ff" to="#1d7fe0" size={size} />,
-    width: 520,
-    height: 460,
     render: () => <ContactApp />,
   },
 ];
