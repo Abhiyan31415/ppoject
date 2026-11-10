@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Search } from "lucide-react";
+import { FileText, Search } from "lucide-react";
 import { profile, projects } from "@/lib/data";
 
 type Item = { label: string; action: () => void } | "divider";
@@ -135,6 +135,9 @@ export default function MenuBar({
         ))}
       </ul>
       <div className="menubar-right">
+        <button className="menu-title resume-quick" onClick={() => open("resume")}>
+          <FileText size={13} /> Resume
+        </button>
         <button className="menu-title" aria-label="Search (⌘K)" onClick={openSpotlight}>
           <Search size={14} />
         </button>

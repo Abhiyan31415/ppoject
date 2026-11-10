@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import { aboutCards, profile } from "@/lib/data";
 
 const bio = aboutCards.find((c) => c.type === "text")?.content as string;
@@ -10,7 +10,12 @@ export default function AboutApp({ open }: { open: (id: string) => void }) {
     <div className="about">
       <div className="about-head">
         <img className="avatar" src={profile.photo} alt="Abhiyan Khanal" />
-        <h1>{profile.name}</h1>
+        <div className="about-name">
+          <h1>{profile.name}</h1>
+          <button className="aqua-btn primary small resume-pill" onClick={() => open("resume")}>
+            <FileText size={13} /> Resume
+          </button>
+        </div>
         <p className="muted">
           {profile.role} · {profile.location}
         </p>
@@ -40,9 +45,6 @@ export default function AboutApp({ open }: { open: (id: string) => void }) {
       <div className="button-row">
         <button className="aqua-btn primary" onClick={() => open("projects")}>
           See my projects
-        </button>
-        <button className="aqua-btn" onClick={() => open("resume")}>
-          Resume
         </button>
       </div>
 
